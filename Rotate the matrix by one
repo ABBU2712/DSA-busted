@@ -1,0 +1,11 @@
+#Rotate the matrix by one 
+#Ex: I/P= 1 2 3 4 O/P= 4 1 2 3
+def rotate( a, n):
+    t=a[n-1]
+    x = a[n - 1]
+     
+    for i in range(n - 1, 0, -1):
+        a[i] = a[i - 1];
+         
+    a[0] = x;
+ 
