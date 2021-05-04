@@ -1,0 +1,20 @@
+#Given an array of integers where each element represents the max number of steps that can be made forward from that element. Find the minimum number of jumps to reach the end of the array (starting from the first element). If an element is 0, then you cannot move through that element.
+def minJumps(self, arr, n):
+	    if (n<=1):
+	        return 0
+	    if (arr[0]==0):
+	        return -1
+	    max_reach=arr[0]       #Max no. of steps that can be skipped from a particular point
+	    step=arr[0]
+	    jump=1                 #jump
+	    for i in range(1,n):
+	        if (i==n-1):
+	            return jump
+	        max_reach=max(max_reach,i+arr[i])
+	        step=step-1
+	        if (step==0):
+	            jump=jump+1
+	            if(i>=max_reach):
+	               return -1
+	            step=max_reach-i
+	    return -1
