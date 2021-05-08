@@ -1,0 +1,30 @@
+#Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+#If such an arrangement is not possible, it must rearrange it as the lowest possible order (i.e., sorted in ascending order).
+
+#The replacement must be in place and use only constant extra memory.
+def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = nums[:]
+        m, v = -1, []
+        n.sort(reverse = True)
+        if nums == n:
+            nums.sort()
+        else:
+            for i in range(1,len(nums) + 1):
+                if nums[-i] >= m:
+                    m = nums[-i]
+                    v.append(m)
+                else:
+                    v.sort()
+                    for j in range(len(v)):
+                        if v[j] > nums[-i]:
+                            a = nums[-i]
+                            nums[-i] = v[j]
+                            v[j] = a
+                            nums[len(nums) - i + 1:] = v
+                            break
+                    break
+            print(nums)
