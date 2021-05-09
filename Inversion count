@@ -1,0 +1,11 @@
+#Inversion Count for an array indicates - how far (or close) the array is from being sorted. If the array is already sorted, then the inversion count is 0, but if the array is sorted in the reverse order, the inversion count is the maximum. 
+#exmple:arr[] = {8, 4, 2, 1} output=6 explanation:(8,4)(8,2)(8,1)(4,2)(4,1)(2,1)
+#Method 1(Problem: Time Limit exceeded)
+def inversionCount(self, arr, n):
+        count=0
+        for i in range(n):
+            for j in range(i+1,n):
+                if arr[i]>arr[j]:
+                    count=count+1
+        return count
+
