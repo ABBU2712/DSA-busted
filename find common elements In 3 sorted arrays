@@ -1,0 +1,20 @@
+#find common elements In 3 sorted arrays
+#one liner method
+ def commonElements (self,A, B, C, n1, n2, n3):
+      return sorted(list(set(A)&set(B)&set(C)))
+ #proper solution (not accepted by gfg)
+ def commonElemnts (self,A,B<C,n1,n2,n3):
+      i,j,k=0,0,0
+      while (i<n1 and j<n2 and k<n3):
+           if (A[i]<B[j] and B[j]<C[k]):
+               print (A[i])
+               i=i+1
+               j=j+1
+               k=k+1
+           elif A[i]<B[j]:
+               i=i+1
+            elif B[j]<C[k]:
+               j=j+1
+            else:
+               k=k+1
+             
