@@ -1,0 +1,13 @@
+#Given an array of positive and negative numbers. Find if there is a subarray (of size at-least one) with 0 sum.
+
+def subArrayExists(self,arr,n):
+        ##Your code here
+        #Return true or false
+        s=set()
+        sm=0
+        for i in range(n):
+            sm=sm+arr[i]
+            if sm==0 or sm in s:
+                return True
+                s.add(sm)
+            return False
