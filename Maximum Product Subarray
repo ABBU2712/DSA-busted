@@ -1,0 +1,15 @@
+#Maximum Product Subarray 
+
+def maxProduct(self,arr, n):
+		minval=arr[0]
+		maxval=arr[0]
+		maxprod=arr[0]
+		for i in range(1,n,1):
+		    if (arr[i]<0):
+		        tmp=maxval
+		        maxval=minval
+		        minval=tmp
+		    maxval=max(arr[i],maxval*arr[i])
+		    minval=min(arr[i],minval*arr[i])
+		    maxprod=max(maxprod,maxval)
+		return maxprod
