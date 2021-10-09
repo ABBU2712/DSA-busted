@@ -1,0 +1,40 @@
+#A number can be broken into different contiguous sub-subsequence parts. 
+#Suppose, a number 3245 can be broken into parts like 3 2 4 5 32 24 45 324 245. 
+#And this number is a COLORFUL number, since product of every digit of a contiguous subsequence is different
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def colorful(self, A):
+        if A==None or A<0:
+            return 0
+        
+        # Append all combinations to
+        # a list of integers.
+        string = (str)(A)
+        result = []
+        length = 0
+        while length<len(string):
+            for i in range(len(string)-length):
+                result.append((int)(string[i:i+length+1]))
+            length += 1
+        
+        # Check and append the multiplied
+        # value in dictionary. If already
+        # found in dictionary, the number 
+        # is not colourful and return 0. 
+        # Else if no hit found in dict, return 1.
+        myDict = dict()
+        for i in range(len(result)):
+            multiple = 1
+            temp = result[i]
+            while temp>0:
+                multiple *= temp%10
+                temp = int(temp/10)
+            
+            if myDict.get(multiple, -1)==-1: 
+                myDict[multiple] = result[i]
+            else:
+                return 0
+        return 1
+
